@@ -4,6 +4,7 @@ import {EventAggregator} from "aurelia-event-aggregator";
 import {F7, UserService, MessageService} from "./services/index";
 import environment from "environment";
 import {Endpoint} from "aurelia-api";
+import $ from 'jquery';
 
 @inject(F7, EventAggregator, UserService, Endpoint.of('api'), FetchConfig, MessageService)
 export class App {
@@ -80,8 +81,8 @@ export class App {
 
     configureRouter(config, router) {
         config.title = 'TRBC'
-
         config.addPipelineStep('authorize', AuthenticateStep)
+        config.addPipelineStep('postcomplete', PostCompleteStep)
         config.mapUnknownRoutes({redirect: '#/home'})
 
         //TODO: move this into a Route class?
@@ -123,10 +124,5 @@ export class App {
 }
 
 class PostCompleteStep {
-    check() {
-        return $(".page-content").height() > 5;
-    }
-
-    run() {
     }
 }
