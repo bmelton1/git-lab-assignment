@@ -132,10 +132,9 @@ if git branch -av | grep 'task-3' | grep 'object caching on the client side!'; t
 #test="Test: vcs-tag.sh properly links the tag to the snapshot"
 #if ls -al .repo/refs/tags/blaa | grep "> .repo/snapshots/1"; then pass "$test"; else fail "$test"; fi
 
-echo "======================================================================"
 if [ "$fails" -eq "0" ]; then
-    echo_with_color 2 "All Tests Passed!"
+    echo "All Tests Passed!"
 else
-    echo_with_color 1 "Tests completed with $fails tests failing."
+    echo "Tests completed with $fails tests failing."
     exit 1
 fi
